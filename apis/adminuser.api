@@ -1,0 +1,38 @@
+syntax = "v1"
+
+import "base.api"
+
+
+type (
+    AdminUser {
+        AdminUid string `json:"admin_uid"`
+        AuditType int64 `json:"audit_type"`
+        OpTime  int64 `json:"op_time"`
+        OpDip string `json:"op_dip"`
+        OpDname string `json:"op_dname"`
+    }
+
+    CreateAdminUserRequest {
+        AdminUser
+    }
+
+    CreateAdminUserResponse {
+        Id int64 `json:"id"`
+    }
+
+    GetAdminUserResponse {
+        RespBase
+        Data []AdminUser `json:"data"`
+    }
+)
+
+@server(
+    group: adminuser
+    prefix: /v1/api/adminser
+    middleware: PreHandleMiddleware
+)
+
+service testgozero-api {
+    @handler CreateAdminUser
+    post /create (CreateAdminUserRequest) returns (CreateAdminUserResponse)
+}

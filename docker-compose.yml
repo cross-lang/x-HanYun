@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # x-HanYun service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: x-hanyun
+    ports:
+      - "8888:8888"
+    environment:
+      - LOG_DIR=/app/logs
+      - LOG_LEVEL=info
+      - HOST=0.0.0.0
+      - PORT=8888
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      - ./scripts:/app/scripts
+    networks:
+      - hanyun-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8888/swagger/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # MySQL database (optional)
+  mysql:
+    image: mysql:8.0
+    container_name: x-hanyun-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_DATABASE: hanyun
+      MYSQL_USER: hanyun
+      MYSQL_PASSWORD: hanyun123456
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./scripts:/docker-entrypoint-initdb.d
+    networks:
+      - hanyun-network
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Elasticsearch (optional)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    container_name: x-hanyun-es
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    networks:
+      - hanyun-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  hanyun-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+  es-data:

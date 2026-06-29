@@ -1,0 +1,35 @@
+syntax = "v1"
+
+import "base.api"
+
+type (
+	OpLog {
+		AdminUid  string `json:"admin_uid"`
+		AuditType int64  `json:"audit_type"`
+		OpTime    int64  `json:"op_time"`
+		OpDip     string `json:"op_dip"`
+		OpDname   string `json:"op_dname"`
+	}
+	CreateOpLogRequest {
+		OpLog
+	}
+	CreateOpLogResponse {
+		Id int64 `json:"id"`
+	}
+	GetOpLogResponse {
+		RespBase
+		Data []OpLog `json:"data"`
+	}
+)
+
+@server(
+	group: oplog
+	prefix: /v1/api/oplog
+	middleware: PreHandleMiddleware
+)
+
+service testgozero-api {
+	@handler CreateOpLog
+	post /create (CreateOpLogRequest) returns (CreateOpLogResponse)
+}
+

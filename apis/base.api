@@ -1,0 +1,14 @@
+syntax = "v1"
+
+
+type EmptyReq {
+}
+
+type RespBase {
+    Code int    `json:"code"`
+    Msg  string `json:"msg"`
+}
+
+type EmptyResp {
+    RespBase
+}

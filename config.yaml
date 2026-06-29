@@ -1,0 +1,34 @@
+# x-HanYun 应用配置文件示例
+# 复制此文件为 config.yaml 并根据实际环境修改配置
+
+# 应用名称
+Name: 汉云
+
+# 监听地址
+Host: 0.0.0.0
+
+# 监听端口
+Port: 8888
+
+# 调度任务间隔
+Interval: 5s
+
+# MySQL 数据库配置
+MySQLDSN: root:123456@tcp(localhost:3306)/hanyun?charset=utf8mb4
+
+# Elastic Search 配置（可选）
+ESConf:
+  Addresses: http://2.112.66.1:9200
+  Username: elastic
+  Password: tacre+Woa--e23tareact
+
+# 日志配置
+Logger:
+  # 日志文件存储目录
+  LogDir: logs
+  # 日志级别：debug, info, warn, error
+  Level: info
+  # 是否启用远程日志推送
+  EnableRemote: false
+  # 远程日志服务地址
+  RemoteURL: ""

@@ -1,0 +1,10 @@
+syntax = "v1"
+
+import "oplog.api"
+import "adminuser.api"
+
+info (
+	title:   "Main Test Go Zero API"
+	version: "1.0.0"
+)
+
