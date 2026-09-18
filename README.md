@@ -216,6 +216,7 @@ dlv debug --headless --listen=:2345 --api-version=2 --accept-multiclient ./cmd/s
 服务与文档：
 - 服务：`http://localhost:8888`
 - Swagger：`http://localhost:8888/swagger/`
+- Postman：导入 `pkg/swagger/x-HanYun.postman_collection.json`，然后按需修改 Collection 变量 `baseUrl`
 - 示例接口：
   - `POST /v1/api/adminser/create`
   - `POST /v1/api/oplog/create`
