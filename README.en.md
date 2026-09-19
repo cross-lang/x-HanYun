@@ -1,8 +1,10 @@
-# x-HanYun
+# HanYun
+
+[中文](README.md) | English
 
 ## Project Overview
 
-x-HanYun is a production-grade Go web framework deeply encapsulated based on go-zero. It provides a "clearly layered, easy to extend, and production-ready" backend infrastructure for rapid development of enterprise-level backend services. Its core value lies in out-of-the-box standard architecture, unified error handling and logging management, comprehensive utility library support. It is suitable for backend management systems, API service scaffolding, business systems requiring rapid iteration, and more.
+`HanYun` is a production-grade Go web framework deeply encapsulated based on go-zero. It provides a "clearly layered, easy to extend, and production-ready" backend infrastructure for rapid development of enterprise-level backend services. Its core value lies in out-of-the-box standard architecture, unified error handling and logging management, comprehensive utility library support. It is suitable for backend management systems, API service scaffolding, business systems requiring rapid iteration, and more.
 
 ## Core Features
 
