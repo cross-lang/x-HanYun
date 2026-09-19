@@ -156,7 +156,7 @@ graph LR
 ### Clone the Project
 
 ```bash
-git clone https://gitee.com/yeyushilai/x-HanYun.git
+git clone https://github.com/cross-lang/x-HanYun.git
 cd x-HanYun
 ```
 
@@ -355,4 +355,4 @@ docker-compose logs -f               # View Docker logs
 - **Email**: john.young@foxmail.com
 - **Gitee**: https://gitee.com/yeyushilai
 - **GitHub**: https://github.com/yeyushilai
-- **Project**: https://gitee.com/yeyushilai/x-HanYun
+- **Project**: https://github.com/cross-lang/x-HanYun

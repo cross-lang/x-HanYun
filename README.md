@@ -153,7 +153,7 @@ graph LR
 ### 项目克隆
 
 ```bash
-git clone https://gitee.com/yeyushilai/x-HanYun.git
+git clone https://github.com/cross-lang/x-HanYun.git
 cd x-HanYun
 ```
 
@@ -340,4 +340,4 @@ docker-compose logs -f               # 查看 Docker 日志
 - **邮箱**：john.young@foxmail.com
 - **Gitee 地址**：https://gitee.com/yeyushilai
 - **GitHub 地址**：https://github.com/yeyushilai
-- **项目地址**：https://gitee.com/yeyushilai/x-HanYun
+- **项目地址**：https://github.com/cross-lang/x-HanYun
